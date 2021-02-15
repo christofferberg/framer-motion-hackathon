@@ -99,7 +99,7 @@ const MainMenu: FunctionComponent<Props> = () => {
                     ref={ref}
                     className={clsx(
                       s.menu,
-                      'relative w-full text-sm bg-primary border border-accents-2 rounded outline-none shadow-lg md:text-md'
+                      'md:text-md relative w-full text-sm bg-primary border border-accents-2 rounded outline-none shadow-lg'
                     )}
                   >
                     <div className="w-full">

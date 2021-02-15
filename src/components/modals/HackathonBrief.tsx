@@ -62,9 +62,9 @@ const HackathonBrief: FunctionComponent<Props> = () => {
           </li>
 
           <li>
-            Animationen skal kunne implementeres nemt i en moderne React frontend, og
-            udvikleren skal ikke bruge budget på at opfinde animationen og dens
-            timings m.m.
+            Animationen skal kunne implementeres nemt i en moderne React
+            frontend, og udvikleren skal ikke bruge budget på at opfinde
+            animationen og dens timings m.m.
           </li>
 
           <li>Konkrete code snippets til implementering.</li>
