@@ -49,18 +49,18 @@ const Modal: FunctionComponent<Props> = ({
 
   return (
     <Portal>
-      <RemoveScroll>
-        <AnimatePresence>
-          {open ? (
-            <>
-              <motion.div
-                className={s.modalOverlay}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.1 }}
-              />
+      <AnimatePresence>
+        {open ? (
+          <>
+            <motion.div
+              className={s.modalOverlay}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.1 }}
+            />
 
+            <RemoveScroll>
               <div className={s.modal}>
                 <motion.div
                   initial={{ opacity: 0, y: 5 }}
@@ -84,10 +84,10 @@ const Modal: FunctionComponent<Props> = ({
                   </FocusLock>
                 </motion.div>
               </div>
-            </>
-          ) : null}
-        </AnimatePresence>
-      </RemoveScroll>
+            </RemoveScroll>
+          </>
+        ) : null}
+      </AnimatePresence>
     </Portal>
   )
 }

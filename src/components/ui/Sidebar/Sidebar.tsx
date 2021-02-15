@@ -18,8 +18,8 @@ const Sidebar: FunctionComponent<Props> = ({
 
   return (
     <Portal>
-      <RemoveScroll>
-        {open ? (
+      {open ? (
+        <RemoveScroll>
           <div className={s.root} ref={ref}>
             <div className="absolute inset-0 overflow-hidden">
               <div
@@ -35,8 +35,8 @@ const Sidebar: FunctionComponent<Props> = ({
               </section>
             </div>
           </div>
-        ) : null}
-      </RemoveScroll>
+        </RemoveScroll>
+      ) : null}
     </Portal>
   )
 }
