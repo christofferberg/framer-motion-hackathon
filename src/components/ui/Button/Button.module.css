@@ -1,0 +1,27 @@
+.root {
+  @apply inline-flex items-center justify-center text-center font-bold rounded shadow cursor-pointer transition duration-150 ease-in-out;
+}
+
+.sm {
+  @apply px-3 py-1 text-sm;
+}
+
+.md {
+  @apply px-10 py-3 text-base;
+}
+
+.purple {
+  @apply text-white bg-purple-500 hover:bg-purple-600 focus:bg-purple-600;
+}
+
+.isLoading {
+  @apply cursor-not-allowed;
+}
+
+.isDisabled,
+.isDisabled:hover {
+  @apply opacity-40 cursor-not-allowed;
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}

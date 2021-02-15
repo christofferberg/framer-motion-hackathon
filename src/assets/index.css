@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@layer base {
+  :root {
+    --primary: #f7f7f9;
+    --primary-2: #ffffff;
+
+    --text-base: #393939;
+    --text-primary: #000000;
+    --text-secondary: #808080;
+    --text-muted: #808080;
+
+    --accents-0: #fafafa;
+    --accents-1: #f8f8f8;
+    --accents-2: #f3f3f3;
+    --accents-3: #dedede;
+    --accents-4: #9f9f9f;
+    --accents-5: #808080;
+    --accents-6: #676767;
+    --accents-7: #393939;
+    --accents-8: #272727;
+    --accents-9: #1d1d1d;
+
+    --font-sans: Inter, -apple-system, system-ui, BlinkMacSystemFont,
+      'Helvetica Neue', 'Helvetica', sans-serif;
+  }
+
+  html.dark {
+    --primary: #1b1b1b;
+    --primary-2: #272727;
+
+    --text-base: #dedede;
+    --text-primary: #ffffff;
+    --text-secondary: #808080;
+    --text-muted: #9f9f9f;
+
+    --accents-0: #1d1d1d;
+    --accents-1: #272727;
+    --accents-2: #393939;
+    --accents-3: #676767;
+    --accents-4: #808080;
+    --accents-5: #9f9f9f;
+    --accents-6: #dedede;
+    --accents-7: #f3f3f3;
+    --accents-8: #f8f8f8;
+    --accents-9: #fafafa;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url(/fonts/inter-var-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+      U+2215, U+FEFF, U+FFFD;
+  }
+
+  html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+    height: 100%;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+  }
+
+  html,
+  body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}

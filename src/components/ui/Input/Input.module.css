@@ -1,0 +1,11 @@
+.root {
+  @apply flex flex-col;
+}
+
+.input {
+  @apply relative w-full focus:bg-gray-100 bg-transparent border border-gray-300 focus:border-gray-300 rounded focus:outline-none transition focus:ring-0;
+}
+
+:global(.dark) .input {
+  @apply focus:bg-gray-800 border-gray-400;
+}

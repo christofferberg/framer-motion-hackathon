@@ -1,0 +1,4 @@
+.root {
+  @apply flex flex-col mx-auto min-h-screen bg-primary;
+  max-width: 2560px;
+}

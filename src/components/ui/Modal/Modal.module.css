@@ -1,0 +1,19 @@
+.modal {
+  @apply fixed z-50 inset-0 flex items-start justify-center w-screen h-screen text-primary overflow-auto;
+}
+
+.modalOverlay {
+  @apply fixed z-50 inset-0 w-screen h-screen bg-black bg-opacity-20;
+}
+
+:global(.dark) .modalOverlay {
+  @apply bg-opacity-60;
+}
+
+.modalContent {
+  @apply relative flex flex-col m-4 p-6 w-full max-w-3xl bg-primary border border-accents-2 rounded shadow md:my-20;
+}
+
+:global(.dark) .modalContent {
+  @apply bg-primary-2;
+}

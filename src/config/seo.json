@@ -1,0 +1,16 @@
+{
+  "title": "Framer Motion Hackathon",
+  "titleTemplate": "%s",
+  "description": "Some description",
+  "openGraph": {
+    "type": "website",
+    "locale": "da",
+    "url": "",
+    "site_name": ""
+  },
+  "twitter": {
+    "handle": "",
+    "site": "",
+    "cardType": "summary_large_image"
+  }
+}
