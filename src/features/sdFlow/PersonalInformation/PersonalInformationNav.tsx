@@ -18,8 +18,8 @@ const PersonalInformationNav: FunctionComponent<Props> = () => {
         <div className="flex items-center space-x-4">
           <MotionButton
             layoutId="sd-button-back"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ type: 'spring', stiffness: 50 }}
             variant="sd-outline"
             onClick={() => dispatch(setStep('become_member'))}
