@@ -1,19 +1,23 @@
-import clsx from 'clsx'
-import { FunctionComponent } from 'react'
-import s from './Welcome.module.css'
-import Line from '@components/icons/Line'
 import ArrowRight from '@components/icons/ArrowRight'
+import clsx from 'clsx'
+import Line from '@components/icons/Line'
+import s from './Welcome.module.css'
+import { FunctionComponent } from 'react'
+import { incrementStep } from '@features/sdFlow/sdFlowSlice'
 import { motion } from 'framer-motion'
+import { useAppDispatch } from '@app/store'
+import { Button } from '@components/ui'
 
 interface Props {
   className?: string
 }
 
 const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
+  const dispatch = useAppDispatch()
   const rootClassName = clsx(s.root, {}, className)
 
   return (
-    <motion.div exit={{ opacity: 0 }} className={rootClassName}>
+    <div className={rootClassName}>
       <div className="mx-auto max-w-3xl space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold leading-tight">
@@ -78,14 +82,17 @@ const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
         </div>
 
         <div className="flex flex-col items-center space-y-6">
-          <button className="inline-flex px-6 py-3 bg-sd-primary hover:bg-sd-primary-hover rounded-full shadow-lg hover:shadow-xl space-x-2 transition duration-100 ease-in-out">
-            <span>Gå i gang</span>
-            <ArrowRight></ArrowRight>
-          </button>
+          <motion.div layoutId="sd-next-step">
+            <Button colorScheme="sd" onClick={() => dispatch(incrementStep())}>
+              <span>Gå i gang</span>
+              <ArrowRight />
+            </Button>
+          </motion.div>
+
           <button className="underline">Gå til kladde</button>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

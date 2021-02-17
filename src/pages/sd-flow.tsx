@@ -9,16 +9,14 @@ import {
   incrementStep,
   useSdFlow,
 } from '@features/sdFlow/sdFlowSlice'
+import { AnimateSharedLayout } from 'framer-motion'
 import { Layout } from '@components/common'
 import { useAppDispatch } from '@app/store'
 import { useCallback } from 'react'
-import { AnimatePresence } from 'framer-motion'
 
 export default function SdFlow(): JSX.Element {
   const { activeStep } = useSdFlow()
   const dispatch = useAppDispatch()
-
-  console.log('activeStep', activeStep)
 
   const renderStep = useCallback((activeStep: number): JSX.Element => {
     switch (activeStep) {
@@ -35,9 +33,7 @@ export default function SdFlow(): JSX.Element {
 
   return (
     <Container>
-      <AnimatePresence exitBeforeEnter>
-        {renderStep(activeStep)}
-      </AnimatePresence>
+      <AnimateSharedLayout>{renderStep(activeStep)}</AnimateSharedLayout>
 
       <div className="mt-20 space-x-4">
         <Button onClick={() => dispatch(decrementStep())}>Previous step</Button>

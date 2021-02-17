@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     ref
   ) => {
     const rootClassName = clsx(s.root, {}, className)
-    const inputClassName = clsx(s.input, 'p-4', {})
+    const inputClassName = clsx(s.input, {})
 
     const handleOnChange = ({
       target: { value },

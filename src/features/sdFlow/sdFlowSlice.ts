@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useTypedSelector } from '@app/store/store'
 
+type SdFlowSteps = 'welcome' | 'personal_information' | 'children_information'
+
 interface SDFlowState {
   activeStep: number
 }
