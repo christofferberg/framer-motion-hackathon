@@ -1,38 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useTypedSelector } from '@app/store/store'
 
-type SdFlowSteps = 'welcome' | 'personal_information' | 'children_information'
+export type SdFlowSteps =
+  | 'become_member'
+  | 'personal_information'
+  | 'children_information'
 
 interface SDFlowState {
-  activeStep: number
+  activeStep: SdFlowSteps
 }
 
 const initialState: SDFlowState = {
-  activeStep: 1,
+  activeStep: 'become_member',
 }
 
 const sdFlow = createSlice({
   name: 'sdFlow',
   initialState,
   reducers: {
-    setStep: (state, action: PayloadAction<number>) => {
+    setStep: (state, action: PayloadAction<SdFlowSteps>) => {
       state.activeStep = action.payload
-    },
-    incrementStep: (state) => {
-      if (state.activeStep < 3) {
-        state.activeStep++
-      }
-    },
-    decrementStep: (state) => {
-      if (state.activeStep !== 1) {
-        state.activeStep--
-      }
     },
   },
 })
 
 // Actions
-export const { setStep, incrementStep, decrementStep } = sdFlow.actions
+export const { setStep } = sdFlow.actions
 
 // Selector hooks
 export const useSdFlow = (): SDFlowState => {

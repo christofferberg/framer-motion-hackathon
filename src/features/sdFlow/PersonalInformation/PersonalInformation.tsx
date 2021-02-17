@@ -1,11 +1,9 @@
 import ArrowRight from '@components/icons/ArrowRight'
 import clsx from 'clsx'
 import s from './PersonalInformation.module.css'
-import { Button, Container, Input } from '@components/ui'
+import { Container, Input } from '@components/ui'
 import { FunctionComponent } from 'react'
-import { incrementStep } from '@features/sdFlow/sdFlowSlice'
 import { motion, Spring } from 'framer-motion'
-import { useAppDispatch } from '@app/store'
 
 interface Props {
   className?: string
@@ -20,16 +18,15 @@ const infoSpring: Spring = {
 const PersonalInformation: FunctionComponent<Props> = ({
   className,
 }): JSX.Element => {
-  const dispatch = useAppDispatch()
   const rootClassName = clsx(s.root, {}, className)
 
   return (
-    <div className={rootClassName}>
+    <motion.div className={rootClassName} exit={{ opacity: 0 }}>
       <Container size="sm">
         <div className="max-w-xl">
           <motion.div
             className="mb-8"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 250 }}
             animate={{ opacity: 1, y: 0 }}
             transition={infoSpring}
           >
@@ -60,16 +57,9 @@ const PersonalInformation: FunctionComponent<Props> = ({
               />
             </div>
           </motion.div>
-
-          <motion.div layoutId="sd-next-step">
-            <Button colorScheme="sd" onClick={() => dispatch(incrementStep())}>
-              <span>Næste</span>
-              <ArrowRight />
-            </Button>
-          </motion.div>
         </div>
       </Container>
-    </div>
+    </motion.div>
   )
 }
 
