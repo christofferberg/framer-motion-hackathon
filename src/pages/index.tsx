@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
       id: 2,
       title: 'Sygeforsikring danmark drawer form',
       description: '',
-      href: '/',
+      href: '/sd-drawer-form',
     },
     {
       id: 3,

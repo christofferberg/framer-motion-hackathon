@@ -6,7 +6,7 @@ import { BiPhone } from 'react-icons/bi'
 import { FiArrowUp } from 'react-icons/fi'
 import { useState } from 'react'
 
-export default function ExampleTwo(): JSX.Element {
+export default function SdDrawerForm(): JSX.Element {
   const [open, setOpen] = useState(false)
 
   const variants: Variants = {
