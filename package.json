@@ -58,7 +58,7 @@
     ]
   },
   "dependencies": {
-    "@headlessui/react": "^0.3.0",
+    "@headlessui/react": "^0.3.1",
     "@reach/portal": "^0.13.0",
     "@reduxjs/toolkit": "^1.5.0",
     "@tailwindcss/forms": "^0.2.1",
@@ -75,10 +75,10 @@
     "js-cookie": "^2.2.1",
     "keen-slider": "^5.4.0",
     "lodash": "^4.17.20",
-    "next": "^10.0.6",
+    "next": "^10.0.7",
     "next-seo": "^4.19.0",
     "next-themes": "0.0.10",
-    "postcss": "^8.2.5",
+    "postcss": "^8.2.6",
     "react": "^17.0.1",
     "react-aria": "^3.3.0",
     "react-dom": "^17.0.1",
@@ -89,24 +89,24 @@
     "react-redux": "^7.2.2",
     "react-remove-scroll": "^2.4.1",
     "react-ticker": "^1.2.2",
-    "react-use": "^17.1.0",
-    "swr": "^0.4.1",
+    "react-use": "^17.1.1",
+    "swr": "^0.4.2",
     "tailwindcss": "^2.0.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^10.0.6",
+    "@next/bundle-analyzer": "^10.0.7",
     "@testing-library/react": "^11.2.5",
     "@types/cookie": "^0.4.0",
     "@types/jest": "^26.0.20",
     "@types/js-cookie": "^2.2.6",
     "@types/lodash": "^4.14.168",
-    "@types/node": "^14.14.25",
-    "@types/react": "^17.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
+    "@types/node": "^14.14.28",
+    "@types/react": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
     "babel-jest": "^26.6.3",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^4.3.8",
@@ -120,7 +120,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "prettier-plugin-tailwind": "^2.2.8",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.5"
   },
   "config": {
     "commitizen": {
