@@ -14,13 +14,10 @@ const ChildrenInformationNav: FunctionComponent<Props> = () => {
 
   return (
     <>
-      <Container size="sm">
+      <Container size="md">
         <div className="flex items-center space-x-4">
           <MotionButton
             layoutId="sd-button-back"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 50 }}
             variant="sd-outline"
             onClick={() => dispatch(setStep('personal_information'))}
           >

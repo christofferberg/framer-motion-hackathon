@@ -1,0 +1,10 @@
+.root {
+  @apply fixed bottom-0 left-0 top-0 flex flex-col p-14 2xl:p-20 pr-0 pr-20 w-full 2xl:max-w-2xl max-w-lg;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary-2) 0%,
+    var(--primary-2) 80%,
+    transparent 80%
+  );
+}

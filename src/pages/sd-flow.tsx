@@ -12,59 +12,48 @@ import {
   PersonalInformationNav,
 } from '@features/sdFlow/PersonalInformation'
 import { useAppDispatch } from '@app/store'
+import { SideInfo } from '@features/sdFlow/SideInfo'
+import clsx from 'clsx'
 
 export default function SdFlow(): JSX.Element {
   const dispatch = useAppDispatch()
   const { activeStep } = useSdFlow()
 
   return (
-    <Container>
-      <AnimatePresence exitBeforeEnter>
-        {activeStep === 'become_member' && <BecomeMember key="become_member" />}
+    <div className="relative flex h-screen">
+      <SideInfo />
 
-        {activeStep === 'personal_information' && (
-          <PersonalInformation key="personal_information" />
-        )}
-
-        {activeStep === 'children_information' && (
-          <ChildrenInformation key="children_information" />
-        )}
-      </AnimatePresence>
-
-      <AnimateSharedLayout type="crossfade">
-        {activeStep === 'become_member' && (
-          <BecomeMemberNav key="become_member" />
-        )}
-
-        {activeStep === 'personal_information' && (
-          <PersonalInformationNav key="personal_information" />
-        )}
-
-        {activeStep === 'children_information' && (
-          <ChildrenInformationNav key="children_information" />
-        )}
-      </AnimateSharedLayout>
-
-      <div className="mt-40 space-x-4">
-        <Button onClick={() => dispatch(setStep('become_member'))} size="sm">
-          Bliv medlem
-        </Button>
-
-        <Button
-          onClick={() => dispatch(setStep('personal_information'))}
-          size="sm"
+      <Container>
+        <div
+          className={clsx({
+            'pl-96 2xl:pl-0': activeStep !== 'become_member',
+          })}
         >
-          Personlig information
-        </Button>
+          <AnimateSharedLayout type="crossfade">
+            {activeStep === 'become_member' && (
+              <>
+                <BecomeMember />
+                <BecomeMemberNav key="become_member" />
+              </>
+            )}
 
-        <Button
-          onClick={() => dispatch(setStep('children_information'))}
-          size="sm"
-        >
-          Børn
-        </Button>
-      </div>
-    </Container>
+            {activeStep === 'personal_information' && (
+              <>
+                <PersonalInformation />
+                <PersonalInformationNav key="personal_information" />
+              </>
+            )}
+
+            {activeStep === 'children_information' && (
+              <>
+                <ChildrenInformation />
+                <ChildrenInformationNav key="children_information" />
+              </>
+            )}
+          </AnimateSharedLayout>
+        </div>
+      </Container>
+    </div>
   )
 }
 
