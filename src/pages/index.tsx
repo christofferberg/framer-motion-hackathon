@@ -7,16 +7,18 @@ interface Example {
   title: string
   description: string
   href: string
+  backgroundColor?: string
 }
 
 export default function Home(): JSX.Element {
   const examples: Example[] = [
     {
       id: 1,
-      title: 'Example one',
+      title: 'Sygeforsikring Danmark indmeldelsesflow',
       description:
-        'Augue penatibus dictum sapien luctus torquent fringilla mus himenaeos iaculis non, lorem sodales a maecenas malesuada faucibus facilisis amet semper ridiculus dolor, bibendum nascetur suscipit cursus scelerisque proin elementum conubia commodo. Purus eros class rhoncus duis risus tempus lacinia fermentum elementum justo bibendum curae, dolor laoreet imperdiet odio aliquam cubilia vestibulum varius est id. Nunc ac primis lacinia congue in at ut, ligula mus eleifend faucibus montes consectetur, varius blandit velit interdum dis dui.',
-      href: '/example-one',
+        'Prototype af Sygeforsikring Danmarks indmeldelsesflow til nye medlemmer.',
+      href: '/sd-flow',
+      backgroundColor: '#dc1c24',
     },
     {
       id: 2,
@@ -39,6 +41,20 @@ export default function Home(): JSX.Element {
         'Augue penatibus dictum sapien luctus duis risus tempus lacinia fermentum elementum justo bibendum curae, dolor laoreet imperdiet odio aliquam cubilia vestibulum varius est id. Nunc ac primis lacinia congue in at ut, ligula mus eleifend faucibus montes consectetur, varius blandit velit interdum dis dui.',
       href: '/example-four',
     },
+    {
+      id: 5,
+      title: 'Example five',
+      description:
+        'Augue penatibus dictum sapien luctus duis risus tempus lacinia fermentum elementum justo bibendum curae, dolor laoreet imperdiet odio aliquam cubilia vestibulum varius est id. Nunc ac primis lacinia congue in at ut, ligula mus eleifend faucibus montes consectetur, varius blandit velit interdum dis dui.',
+      href: '/example-five',
+    },
+    {
+      id: 6,
+      title: 'Example six',
+      description:
+        'Augue penatibus dictum sapien luctus duis risus tempus lacinia fermentum elementum justo bibendum curae, dolor laoreet imperdiet odio aliquam cubilia vestibulum varius est id. Nunc ac primis lacinia congue in at ut, ligula mus eleifend faucibus montes consectetur, varius blandit velit interdum dis dui.',
+      href: '/example-six',
+    },
   ]
 
   const exampleContainerVariants: Variants = {
@@ -46,7 +62,7 @@ export default function Home(): JSX.Element {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   }
@@ -70,11 +86,12 @@ export default function Home(): JSX.Element {
       >
         {examples.map((example) => (
           <motion.div variants={exampleVariants} key={example.id}>
-            <Link href={example.href}>
-              <div className="dark:hover:text-primary p-6 h-full hover:text-accents-1 bg-primary-2 hover:bg-purple rounded shadow transition md:p-8">
-                <h2 className="mb-4 text-4xl font-bold">{example.title}</h2>
-                <p>{example.description}</p>
-              </div>
+            <Link
+              href={example.href}
+              className="dark:hover:text-primary block p-6 h-full hover:text-accents-1 bg-primary-2 hover:bg-purple focus-within:bg-purple rounded shadow transition md:p-8"
+            >
+              <h2 className="mb-4 text-4xl font-bold">{example.title}</h2>
+              <p>{example.description}</p>
             </Link>
           </motion.div>
         ))}

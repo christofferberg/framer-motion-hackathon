@@ -1,22 +1,11 @@
 import FocusLock from 'react-focus-lock'
 import Portal from '@reach/portal'
 import s from './Modal.module.css'
-import { CgClose } from 'react-icons/cg'
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from 'body-scroll-lock'
-import {
-  FunctionComponent,
-  useRef,
-  useEffect,
-  useCallback,
-  MutableRefObject,
-} from 'react'
-import { useClickAway } from 'react-use'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Close } from '@components/icons'
+import { FunctionComponent, useRef, useEffect, useCallback } from 'react'
+import { RemoveScroll } from 'react-remove-scroll'
+import { useClickAway } from 'react-use'
 
 interface Props {
   className?: string
@@ -49,16 +38,12 @@ const Modal: FunctionComponent<Props> = ({
   useEffect(() => {
     if (ref.current) {
       if (open) {
-        disableBodyScroll(ref.current)
         window.addEventListener('keydown', handleKey)
-      } else {
-        enableBodyScroll(ref.current)
       }
     }
 
     return () => {
       window.removeEventListener('keydown', handleKey)
-      clearAllBodyScrollLocks()
     }
   }, [open, handleKey])
 
@@ -75,29 +60,31 @@ const Modal: FunctionComponent<Props> = ({
               transition={{ duration: 0.1 }}
             />
 
-            <div className={s.modal}>
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 5 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                className={s.modalContent}
-                role="dialog"
-                ref={ref}
-              >
-                <FocusLock returnFocus>
-                  <button
-                    onClick={onClose}
-                    aria-label="Close panel"
-                    className="absolute right-0 top-0 m-3 hover:text-gray-500 transition duration-150 ease-in-out"
-                  >
-                    <Close size={24} />
-                  </button>
+            <RemoveScroll>
+              <div className={s.modal}>
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 5 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                  className={s.modalContent}
+                  role="dialog"
+                  ref={ref}
+                >
+                  <FocusLock returnFocus>
+                    <button
+                      onClick={onClose}
+                      aria-label="Close panel"
+                      className="absolute right-0 top-0 m-3 hover:text-gray-500 transition duration-150 ease-in-out"
+                    >
+                      <Close size={24} />
+                    </button>
 
-                  {children}
-                </FocusLock>
-              </motion.div>
-            </div>
+                    {children}
+                  </FocusLock>
+                </motion.div>
+              </div>
+            </RemoveScroll>
           </>
         ) : null}
       </AnimatePresence>
