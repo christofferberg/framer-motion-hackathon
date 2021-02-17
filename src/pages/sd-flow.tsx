@@ -1,14 +1,17 @@
 import { Button, Container } from '@components/ui'
 import { setStep, useSdFlow } from '@features/sdFlow/sdFlowSlice'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-import { Layout } from '@components/common'
-import { ChildrenInformation } from '@features/sdFlow'
-import { useAppDispatch } from '@app/store'
 import { BecomeMember, BecomeMemberNav } from '@features/sdFlow/BecomeMember'
+import {
+  ChildrenInformation,
+  ChildrenInformationNav,
+} from '@features/sdFlow/ChildrenInformation'
+import { Layout } from '@components/common'
 import {
   PersonalInformation,
   PersonalInformationNav,
 } from '@features/sdFlow/PersonalInformation'
+import { useAppDispatch } from '@app/store'
 
 export default function SdFlow(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -35,6 +38,10 @@ export default function SdFlow(): JSX.Element {
 
         {activeStep === 'personal_information' && (
           <PersonalInformationNav key="personal_information" />
+        )}
+
+        {activeStep === 'children_information' && (
+          <ChildrenInformationNav key="children_information" />
         )}
       </AnimateSharedLayout>
 

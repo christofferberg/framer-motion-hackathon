@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react'
 import { ArrowLeft, ArrowRight } from '@components/icons'
 import { Button, Container } from '@components/ui'
+import React, { FunctionComponent } from 'react'
 import { motion } from 'framer-motion'
 import { setStep } from 'features/sdFlow/sdFlowSlice'
 import { useAppDispatch } from '@app/store'
@@ -9,7 +9,7 @@ interface Props {}
 
 const MotionButton = motion.custom(Button)
 
-const PersonalInformationNav: FunctionComponent<Props> = () => {
+const ChildrenInformationNav: FunctionComponent<Props> = () => {
   const dispatch = useAppDispatch()
 
   return (
@@ -22,17 +22,13 @@ const PersonalInformationNav: FunctionComponent<Props> = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 50 }}
             variant="sd-outline"
-            onClick={() => dispatch(setStep('become_member'))}
+            onClick={() => dispatch(setStep('personal_information'))}
           >
             <ArrowLeft size={30} />
             <span>Gå tilbage</span>
           </MotionButton>
 
-          <MotionButton
-            layoutId="sd-button-next"
-            variant="sd"
-            onClick={() => dispatch(setStep('children_information'))}
-          >
+          <MotionButton layoutId="sd-button-next" variant="sd">
             <span>Næste</span>
             <ArrowRight size={30} />
           </MotionButton>
@@ -42,4 +38,4 @@ const PersonalInformationNav: FunctionComponent<Props> = () => {
   )
 }
 
-export default PersonalInformationNav
+export default ChildrenInformationNav
