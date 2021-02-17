@@ -3,6 +3,7 @@ import { FunctionComponent } from 'react'
 import s from './Welcome.module.css'
 import Line from '@components/icons/Line'
 import ArrowRight from '@components/icons/ArrowRight'
+import { motion } from 'framer-motion'
 
 interface Props {
   className?: string
@@ -12,7 +13,7 @@ const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
   const rootClassName = clsx(s.root, {}, className)
 
   return (
-    <div className={rootClassName}>
+    <motion.div exit={{ opacity: 0 }} className={rootClassName}>
       <h1 className="text-4xl font-bold leading-tight">Bliv medlem i dag?</h1>
       <p className="text-base leading-tight">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
@@ -48,7 +49,7 @@ const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
           <ArrowRight></ArrowRight>
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

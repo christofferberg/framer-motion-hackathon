@@ -12,6 +12,7 @@ import {
 import { Layout } from '@components/common'
 import { useAppDispatch } from '@app/store'
 import { useCallback } from 'react'
+import { AnimatePresence } from 'framer-motion'
 
 export default function SdFlow(): JSX.Element {
   const { activeStep } = useSdFlow()
@@ -22,21 +23,21 @@ export default function SdFlow(): JSX.Element {
   const renderStep = useCallback((activeStep: number): JSX.Element => {
     switch (activeStep) {
       case 1:
-        return <Welcome />
+        return <Welcome key={activeStep} />
       case 2:
-        return <PersonalInformation />
+        return <PersonalInformation key={activeStep} />
       case 3:
-        return <ChildrenInformation />
+        return <ChildrenInformation key={activeStep} />
       default:
-        return <Welcome />
+        return <Welcome key={activeStep} />
     }
   }, [])
 
   return (
     <Container>
-      <h2>SD Flow</h2>
-
-      {renderStep(activeStep)}
+      <AnimatePresence exitBeforeEnter>
+        {renderStep(activeStep)}
+      </AnimatePresence>
 
       <div className="mt-20 space-x-4">
         <Button onClick={() => dispatch(decrementStep())}>Previous step</Button>
