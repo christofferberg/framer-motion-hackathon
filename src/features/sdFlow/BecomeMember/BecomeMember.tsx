@@ -23,7 +23,7 @@ const BecomeMember: FunctionComponent<Props> = ({ className }): JSX.Element => {
       className={rootClassName}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -100, transition: { duration: 0.1 } }}
+      exit={{ opacity: 0, y: -50, transition: { duration: 1.15 } }}
       transition={spring}
     >
       <Container size="md" className="space-y-16">
@@ -41,7 +41,7 @@ const BecomeMember: FunctionComponent<Props> = ({ className }): JSX.Element => {
         </div>
 
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold leading-tight">
+          <h2 className="text-xl font-semibold leading-tight">
             I flowet skal du følgende
           </h2>
 

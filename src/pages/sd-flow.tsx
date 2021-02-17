@@ -1,6 +1,6 @@
 import { Button, Container } from '@components/ui'
 import { setStep, useSdFlow } from '@features/sdFlow/sdFlowSlice'
-import { AnimateSharedLayout } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { BecomeMember, BecomeMemberNav } from '@features/sdFlow/BecomeMember'
 import {
   ChildrenInformation,
@@ -13,38 +13,45 @@ import {
 } from '@features/sdFlow/PersonalInformation'
 import { useAppDispatch } from '@app/store'
 import { SideInfo } from '@features/sdFlow/SideInfo'
+import clsx from 'clsx'
 
 export default function SdFlow(): JSX.Element {
   const dispatch = useAppDispatch()
   const { activeStep } = useSdFlow()
 
   return (
-    <div className="relative h-screen">
+    <div className="relative flex h-screen">
       <SideInfo />
 
       <Container>
-        <AnimateSharedLayout type="crossfade">
-          {activeStep === 'become_member' && (
-            <div>
-              <BecomeMember />
-              <BecomeMemberNav key="become_member" />
-            </div>
-          )}
+        <div
+          className={clsx({
+            'pl-96 2xl:pl-0': activeStep !== 'become_member',
+          })}
+        >
+          <AnimateSharedLayout type="crossfade">
+            {activeStep === 'become_member' && (
+              <>
+                <BecomeMember />
+                <BecomeMemberNav key="become_member" />
+              </>
+            )}
 
-          {activeStep === 'personal_information' && (
-            <div>
-              <PersonalInformation />
-              <PersonalInformationNav key="personal_information" />
-            </div>
-          )}
+            {activeStep === 'personal_information' && (
+              <>
+                <PersonalInformation />
+                <PersonalInformationNav key="personal_information" />
+              </>
+            )}
 
-          {activeStep === 'children_information' && (
-            <div>
-              <ChildrenInformation />
-              <ChildrenInformationNav key="children_information" />
-            </div>
-          )}
-        </AnimateSharedLayout>
+            {activeStep === 'children_information' && (
+              <>
+                <ChildrenInformation />
+                <ChildrenInformationNav key="children_information" />
+              </>
+            )}
+          </AnimateSharedLayout>
+        </div>
       </Container>
     </div>
   )

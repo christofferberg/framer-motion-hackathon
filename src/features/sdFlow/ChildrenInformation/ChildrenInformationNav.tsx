@@ -14,23 +14,21 @@ const ChildrenInformationNav: FunctionComponent<Props> = () => {
 
   return (
     <>
-      <Container size="sm">
-        <div className="px-10">
-          <div className="flex items-center space-x-4">
-            <MotionButton
-              layoutId="sd-button-back"
-              variant="sd-outline"
-              onClick={() => dispatch(setStep('personal_information'))}
-            >
-              <ArrowLeft size={30} />
-              <span>Gå tilbage</span>
-            </MotionButton>
+      <Container size="md">
+        <div className="flex items-center space-x-4">
+          <MotionButton
+            layoutId="sd-button-back"
+            variant="sd-outline"
+            onClick={() => dispatch(setStep('personal_information'))}
+          >
+            <ArrowLeft size={30} />
+            <span>Gå tilbage</span>
+          </MotionButton>
 
-            <MotionButton layoutId="sd-button-next" variant="sd">
-              <span>Næste</span>
-              <ArrowRight size={30} />
-            </MotionButton>
-          </div>
+          <MotionButton layoutId="sd-button-next" variant="sd">
+            <span>Næste</span>
+            <ArrowRight size={30} />
+          </MotionButton>
         </div>
       </Container>
     </>

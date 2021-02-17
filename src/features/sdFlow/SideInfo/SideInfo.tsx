@@ -51,7 +51,10 @@ const SideInfo: FunctionComponent<Props> = () => {
         initial={'hide'}
         animate={showSideInfo ? 'show' : 'hide'}
       >
-        <motion.div className="mb-24 mt-auto" variants={imageVariants}>
+        <motion.div
+          className="mb-10 2xl:mb-24 mt-auto"
+          variants={imageVariants}
+        >
           <AnimatePresence initial={false} exitBeforeEnter>
             {activeStep === 'personal_information' && (
               <motion.div
@@ -95,15 +98,14 @@ const SideInfo: FunctionComponent<Props> = () => {
           </AnimatePresence>
         </motion.div>
 
-        <div className="max-w-sm">
-          <h2 className="mb-4 text-3xl">
+        <div className="pr-14 w-4/5">
+          <h2 className="mb-2 2xl:mb-4 2xl:text-3xl text-xl font-semibold">
             Hvad skal vi bruge informationen til?
           </h2>
 
-          <p>
-            Varius tempus sociis quisque natoque orci venenatis conubia nostra
-            parturient cursus lacus, dis habitant rutrum tempor torquent aenean
-            cum eros quis.
+          <p className="2xl:text-base text-sm">
+            Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur
+            purus sit amet fermentum.
           </p>
         </div>
       </motion.div>

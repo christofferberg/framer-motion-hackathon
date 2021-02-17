@@ -14,7 +14,7 @@ const PersonalInformationNav: FunctionComponent<Props> = () => {
 
   return (
     <>
-      <Container size="sm">
+      <Container size="md">
         <div className="flex items-center space-x-4">
           <MotionButton
             layoutId="sd-button-back"
