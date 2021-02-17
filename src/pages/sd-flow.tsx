@@ -1,6 +1,6 @@
 import { Button, Container } from '@components/ui'
 import { setStep, useSdFlow } from '@features/sdFlow/sdFlowSlice'
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { Layout } from '@components/common'
 import { ChildrenInformation } from '@features/sdFlow'
 import { useAppDispatch } from '@app/store'

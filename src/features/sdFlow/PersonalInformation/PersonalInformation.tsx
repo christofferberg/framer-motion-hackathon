@@ -1,4 +1,3 @@
-import ArrowRight from '@components/icons/ArrowRight'
 import clsx from 'clsx'
 import s from './PersonalInformation.module.css'
 import { Container, Input } from '@components/ui'
