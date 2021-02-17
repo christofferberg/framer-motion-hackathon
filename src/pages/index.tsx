@@ -7,16 +7,18 @@ interface Example {
   title: string
   description: string
   href: string
+  backgroundColor?: string
 }
 
 export default function Home(): JSX.Element {
   const examples: Example[] = [
     {
       id: 1,
-      title: 'Example one',
+      title: 'Sygeforsikring Danmark indmeldelsesflow',
       description:
-        'Augue penatibus dictum sapien luctus torquent fringilla mus himenaeos iaculis non, lorem sodales a maecenas malesuada faucibus facilisis amet semper ridiculus dolor, bibendum nascetur suscipit cursus scelerisque proin elementum conubia commodo. Purus eros class rhoncus duis risus tempus lacinia fermentum elementum justo bibendum curae, dolor laoreet imperdiet odio aliquam cubilia vestibulum varius est id. Nunc ac primis lacinia congue in at ut, ligula mus eleifend faucibus montes consectetur, varius blandit velit interdum dis dui.',
-      href: '/example-one',
+        'Prototype af Sygeforsikring Danmarks indmeldelsesflow til nye medlemmer.',
+      href: '/sd-flow',
+      backgroundColor: '#dc1c24',
     },
     {
       id: 2,
