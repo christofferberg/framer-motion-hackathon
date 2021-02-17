@@ -1,5 +1,5 @@
 .root {
-  @apply inline-flex items-center justify-center text-center font-bold rounded shadow cursor-pointer transition duration-150 ease-in-out;
+  @apply inline-flex items-center justify-center text-center font-bold rounded shadow cursor-pointer;
 }
 
 .sm {
@@ -15,7 +15,11 @@
 }
 
 .sd {
-  @apply inline-flex px-6 py-3 text-white bg-sd-primary hover:bg-sd-primary-hover rounded-full shadow-lg hover:shadow-xl space-x-2;
+  @apply inline-flex px-6 py-2 text-white bg-sd-primary hover:bg-sd-primary-hover border-2 border-transparent rounded-full shadow-lg hover:shadow-xl space-x-2;
+}
+
+.sdOutline {
+  @apply inline-flex px-6 py-2 text-primary text-white hover:bg-accents-2 bg-transparent border-2 border-accents-8 rounded-full shadow-lg hover:shadow-xl space-x-2;
 }
 
 .isLoading {

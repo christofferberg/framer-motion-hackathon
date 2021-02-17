@@ -1,24 +1,32 @@
-import ArrowRight from '@components/icons/ArrowRight'
 import clsx from 'clsx'
 import Line from '@components/icons/Line'
-import s from './Welcome.module.css'
+import s from './BecomeMember.module.css'
 import { FunctionComponent } from 'react'
-import { incrementStep } from '@features/sdFlow/sdFlowSlice'
-import { motion } from 'framer-motion'
-import { useAppDispatch } from '@app/store'
-import { Button } from '@components/ui'
+import { motion, Spring } from 'framer-motion'
+import { Container } from '@components/ui'
 
 interface Props {
   className?: string
 }
 
-const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
-  const dispatch = useAppDispatch()
+const spring: Spring = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 20,
+}
+
+const BecomeMember: FunctionComponent<Props> = ({ className }): JSX.Element => {
   const rootClassName = clsx(s.root, {}, className)
 
   return (
-    <div className={rootClassName}>
-      <div className="mx-auto max-w-3xl space-y-16">
+    <motion.div
+      className={rootClassName}
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -100, transition: { duration: 0.1 } }}
+      transition={spring}
+    >
+      <Container size="md" className="space-y-16">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold leading-tight">
             Bliv medlem i dag
@@ -39,7 +47,7 @@ const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
 
           <div className="relative">
             <div className="absolute inset-0 px-28 transform -translate-y-4">
-              <Line className="w-full"></Line>
+              <Line className="w-full" />
             </div>
 
             <div className="relative grid grid-cols-3">
@@ -80,20 +88,9 @@ const Welcome: FunctionComponent<Props> = ({ className }): JSX.Element => {
             </div>
           </div>
         </div>
-
-        <div className="flex flex-col items-center space-y-6">
-          <motion.div layoutId="sd-next-step">
-            <Button colorScheme="sd" onClick={() => dispatch(incrementStep())}>
-              <span>Gå i gang</span>
-              <ArrowRight />
-            </Button>
-          </motion.div>
-
-          <button className="underline">Gå til kladde</button>
-        </div>
-      </div>
-    </div>
+      </Container>
+    </motion.div>
   )
 }
 
-export default Welcome
+export default BecomeMember

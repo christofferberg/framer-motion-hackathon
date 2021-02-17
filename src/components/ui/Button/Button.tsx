@@ -12,7 +12,7 @@ import { LoadingDots } from '@components/ui'
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string
   className?: string
-  colorScheme?: 'purple' | 'sd'
+  variant?: 'purple' | 'sd' | 'sd-outline'
   size?: 'sm' | 'md' | 'lg'
   active?: boolean
   type?: 'submit' | 'reset' | 'button'
@@ -24,7 +24,7 @@ const Button: FunctionComponent<ButtonProps> = forwardRef(
   (props, buttonRef) => {
     const {
       className,
-      colorScheme = 'purple',
+      variant = 'purple',
       size = 'md',
       children,
       active,
@@ -38,8 +38,9 @@ const Button: FunctionComponent<ButtonProps> = forwardRef(
     const rootClassName = clsx(
       s.root,
       {
-        [s.purple]: colorScheme === 'purple',
-        [s.sd]: colorScheme === 'sd',
+        [s.purple]: variant === 'purple',
+        [s.sd]: variant === 'sd',
+        [s.sdOutline]: variant === 'sd-outline',
         [s.sm]: size === 'sm',
         [s.md]: size === 'md',
         [s.isLoading]: isLoading,
