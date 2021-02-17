@@ -2,8 +2,8 @@ import { Container, Input } from '@components/ui'
 import { Layout } from '@components/common'
 import { motion, Variants } from 'framer-motion'
 import Image from 'next/image'
-import { BiPhone } from 'react-icons/Bi'
-import { FiArrowUp } from 'react-icons/Fi'
+import { BiPhone } from 'react-icons/bi'
+import { FiArrowUp } from 'react-icons/fi'
 import { useState } from 'react'
 
 export default function ExampleTwo(): JSX.Element {
