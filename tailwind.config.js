@@ -21,6 +21,54 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        sd: {
+          primary: '#CD1D28',
+          'primary-hover': '#A61720',
+          secondary: '#E35A3C',
+        },
+        'sd-snow': {
+          primary: '#F9F6F4',
+          secondary: '#FFF8F9',
+        },
+        'sd-blue': {
+          primary: '#07597A',
+          secondary: '#EAF2FC',
+        },
+        'sd-green': {
+          primary: '#117C72',
+          secondary: '#AFE1DB',
+        },
+        'sd-golden': {
+          primary: '#FA6538',
+          secondary: '#FBBE55',
+        },
+        business: {
+          100: '#EAF2FC',
+          200: '#CBD6E4',
+          300: '#7EB0C5',
+          400: '#4792B0',
+          500: '#07597A',
+          600: '#053C52',
+          tag: '#07597A',
+        },
+        magazine: {
+          100: '#D8F0ED',
+          200: '#92D1CD',
+          300: '#5FA89F',
+          400: '#2FB89F',
+          500: '#117C72',
+          600: '#0A5F55',
+          tag: '#117C72',
+        },
+        providers: {
+          100: '#EAE2B9',
+          200: '#F2CF65',
+          300: '#FBBE55',
+          400: '#FFA60C',
+          500: '#CD1D28',
+          600: '#A61720',
+          tag: '#000000',
+        },
         primary: 'var(--primary)',
         'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',
