@@ -16,11 +16,21 @@ const sdFlow = createSlice({
     setStep: (state, action: PayloadAction<number>) => {
       state.activeStep = action.payload
     },
+    incrementStep: (state) => {
+      if (state.activeStep < 3) {
+        state.activeStep++
+      }
+    },
+    decrementStep: (state) => {
+      if (state.activeStep !== 1) {
+        state.activeStep--
+      }
+    },
   },
 })
 
 // Actions
-export const { setStep } = sdFlow.actions
+export const { setStep, incrementStep, decrementStep } = sdFlow.actions
 
 // Selector hooks
 export const useSdFlow = (): SDFlowState => {

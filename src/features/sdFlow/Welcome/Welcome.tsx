@@ -1,7 +1,6 @@
-import { FunctionComponent } from 'react'
 import clsx from 'clsx'
-
-import s from './ChildrenInformation.module.css'
+import s from './Welcome.module.css'
+import { FunctionComponent } from 'react'
 
 interface Props {
   className?: string
