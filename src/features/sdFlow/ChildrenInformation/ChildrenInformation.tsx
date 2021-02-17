@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import s from './ChildrenInformation.module.css'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { motion, useSpring } from 'framer-motion'
+import { motion, Spring, useSpring } from 'framer-motion'
 
 interface Props {
   className?: string
@@ -35,6 +35,12 @@ const options: readonly Option[] = [
   },
 ] as const
 
+const spring: Spring = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 20,
+}
+
 const ChildrenInformation: FunctionComponent<Props> = ({
   className,
 }): JSX.Element => {
@@ -67,7 +73,13 @@ const ChildrenInformation: FunctionComponent<Props> = ({
   }, [])
 
   return (
-    <motion.div exit={{ opacity: 0 }} className={rootClassName}>
+    <motion.div
+      className={rootClassName}
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -100, transition: { duration: 0.1 } }}
+      transition={spring}
+    >
       <div className="mx-auto max-w-3xl space-y-16">
         <div className="space-y-2">
           <h1 className="text-4xl font-bold leading-tight">
