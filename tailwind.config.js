@@ -105,9 +105,6 @@ module.exports = {
         secondary: 'var(--text-secondary)',
         muted: 'var(--text-muted)',
       },
-      height: {
-        background: '677.531px',
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: [
