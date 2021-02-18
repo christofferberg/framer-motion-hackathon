@@ -4,6 +4,7 @@ import { FunctionComponent } from 'react'
 import { AnimatePresence, motion, Spring, Variants } from 'framer-motion'
 import { useSdFlow } from '@features/sdFlow/sdFlowSlice'
 import Image from 'next/image'
+import { useWindowSize } from 'react-use'
 
 interface Props {}
 
@@ -38,6 +39,7 @@ const imageVariants: Variants = {
 const SideInfo: FunctionComponent<Props> = () => {
   const rootClassName = clsx(s.root)
   const { activeStep } = useSdFlow()
+  const { width: windowWidth } = useWindowSize()
 
   const showSideInfo =
     activeStep === 'personal_information' ||
@@ -49,7 +51,7 @@ const SideInfo: FunctionComponent<Props> = () => {
         className={rootClassName}
         variants={variants}
         initial={'hide'}
-        animate={showSideInfo ? 'show' : 'hide'}
+        animate={showSideInfo && windowWidth > 1024 ? 'show' : 'hide'}
       >
         <motion.div
           className="mb-10 2xl:mb-24 mt-auto"

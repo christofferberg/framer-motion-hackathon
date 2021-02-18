@@ -66,7 +66,7 @@ const SingleSubsidy: FunctionComponent<SingleSubsidyProps> = ({
   })
 
   return (
-    <div className="fixed z-20 inset-y-0 left-1/2 w-full transform -translate-x-1/2">
+    <div className="fixed z-30 inset-y-0 left-1/2 w-full transform -translate-x-1/2">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -78,7 +78,7 @@ const SingleSubsidy: FunctionComponent<SingleSubsidyProps> = ({
           layoutId={`subsidy-${subsidy.id}`}
           className="relative bg-white rounded-xl overflow-hidden"
         >
-          <button onClick={onClose} className="absolute z-30 right-6 top-6">
+          <button onClick={onClose} className="absolute z-40 right-6 top-6">
             <Close className="w-10 h-10 text-black" />
           </button>
           <motion.figure
@@ -98,9 +98,9 @@ const SingleSubsidy: FunctionComponent<SingleSubsidyProps> = ({
             layoutId={`subsidy-content-${subsidy.id}`}
           >
             <div className="space-y-2">
-              <h3 className="text-2xl font-bold tracking-wider uppercase">
+              <motion.h3 className="text-4xl font-bold">
                 {subsidy.title}
-              </h3>
+              </motion.h3>
               <p className="text-gray-500 text-lg">{subsidy.description}</p>
             </div>
             <div className="space-y-4">
@@ -138,7 +138,7 @@ const Subsidy: FunctionComponent<SubsidyProps> = ({ subsidy, onSelect }) => {
             alt={subsidy.title}
             width="500"
             height="500"
-            className="object-contain"
+            className="w-full object-contain"
           />
         </motion.figure>
         <motion.div className="p-6" layoutId={`subsidy-content-${subsidy.id}`}>
@@ -147,7 +147,7 @@ const Subsidy: FunctionComponent<SubsidyProps> = ({ subsidy, onSelect }) => {
         </motion.div>
       </div>
       <button
-        className="flex items-center justify-center p-6 w-full text-lg bg-gray-50 space-x-2"
+        className="flex items-center justify-center p-6 w-full text-lg bg-white space-x-2"
         onClick={() => onSelect(subsidy)}
       >
         Se detaljer
@@ -213,7 +213,7 @@ export default function SdSubsidies(): JSX.Element {
               ) : null}
             </AnimatePresence>
           </div>
-          <div className="grid gap-x-8 grid-flow-col">
+          <div className="grid gap-8 lg:grid-flow-col">
             {subsidies.map((subsidy) => (
               <Subsidy
                 key={subsidy.id}

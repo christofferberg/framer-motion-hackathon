@@ -1,6 +1,6 @@
-import { Button, Container } from '@components/ui'
-import { setStep, useSdFlow } from '@features/sdFlow/sdFlowSlice'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { Container } from '@components/ui'
+import { useSdFlow } from '@features/sdFlow/sdFlowSlice'
+import { AnimateSharedLayout } from 'framer-motion'
 import { BecomeMember, BecomeMemberNav } from '@features/sdFlow/BecomeMember'
 import {
   ChildrenInformation,
@@ -11,12 +11,10 @@ import {
   PersonalInformation,
   PersonalInformationNav,
 } from '@features/sdFlow/PersonalInformation'
-import { useAppDispatch } from '@app/store'
 import { SideInfo } from '@features/sdFlow/SideInfo'
 import clsx from 'clsx'
 
 export default function SdFlow(): JSX.Element {
-  const dispatch = useAppDispatch()
   const { activeStep } = useSdFlow()
 
   return (
@@ -26,7 +24,7 @@ export default function SdFlow(): JSX.Element {
       <Container>
         <div
           className={clsx({
-            'pl-96 2xl:pl-0': activeStep !== 'become_member',
+            'lg:pl-96 2xl:pl-0': activeStep !== 'become_member',
           })}
         >
           <AnimateSharedLayout type="crossfade">

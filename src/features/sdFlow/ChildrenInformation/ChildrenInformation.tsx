@@ -3,6 +3,7 @@ import s from './ChildrenInformation.module.css'
 import { Container } from '@components/ui'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { motion, Spring, useSpring } from 'framer-motion'
+import { ResizeObserver } from 'resize-observer'
 
 interface Props {
   className?: string
@@ -42,6 +43,13 @@ const spring: Spring = {
   damping: 20,
 }
 
+interface UpdatePositionOptions {
+  event: React.MouseEvent<HTMLButtonElement>
+  index: number
+  option: Option
+  reselect?: boolean
+}
+
 const ChildrenInformation: FunctionComponent<Props> = ({
   className,
 }): JSX.Element => {
@@ -53,25 +61,60 @@ const ChildrenInformation: FunctionComponent<Props> = ({
 
   const rootClassName = clsx(s.root, {}, className)
   const boxRef = useRef<HTMLDivElement>(null)
-  const boxWidth = boxRef.current?.getBoundingClientRect().width ?? 0
+  const boxWidth = useRef(0)
 
-  function updatePosition(index: number, option: Option) {
-    x.set(index * (boxWidth / options.length))
+  function updatePosition(options: UpdatePositionOptions): void
+  function updatePosition(index: number, option: Option, select?: boolean): void
+  function updatePosition(
+    indexOrOptions: number | UpdatePositionOptions,
+    option?: Option,
+    reselect = true
+  ) {
+    const index =
+      typeof indexOrOptions === 'number' ? indexOrOptions : indexOrOptions.index
 
-    setSelected({ index, option })
+    if (typeof indexOrOptions === 'number') {
+      x.set(index * (boxWidth.current / options.length))
+
+      if (reselect) {
+        setSelected({ index, option: option ?? { id: 0, value: '' } })
+      }
+    } else {
+      const { event, index, option, reselect } = indexOrOptions
+
+      const { x: buttonX } = event.currentTarget.getBoundingClientRect()
+      const boxX = boxRef.current?.getBoundingClientRect().x ?? 0
+      const padding = boxRef.current
+        ? parseInt(getComputedStyle(boxRef.current).padding, 10)
+        : 0
+
+      x.set(buttonX - boxX - padding)
+
+      if (reselect) {
+        setSelected({ index, option })
+      }
+    }
   }
 
   useEffect(() => {
-    const onResize = () => {
-      updatePosition(selected.index, selected.option)
-    }
+    let observer: ResizeObserver
 
-    document.addEventListener('resize', () => onResize)
+    if (boxRef.current) {
+      observer = new ResizeObserver(([entry]) => {
+        boxWidth.current = entry.contentRect.width
+
+        if (!x.isAnimating()) {
+          updatePosition(selected.index, selected.option, false)
+        }
+      })
+
+      observer.observe(boxRef.current)
+    }
 
     return () => {
-      document.addEventListener('resize', onResize)
+      observer?.disconnect()
     }
-  }, [])
+  }, [selected])
 
   return (
     <motion.div
@@ -97,7 +140,7 @@ const ChildrenInformation: FunctionComponent<Props> = ({
 
           <div className="relative flex h-14 bg-primary-2 rounded">
             <div className="absolute inset-x-0 flex h-full pointer-events-none">
-              <motion.div className="flex items-center p-1 w-1/5">
+              <motion.div className="flex items-center m-1 w-1/5">
                 <motion.button
                   className="px-4 py-2 w-full h-full text-center text-white text-sm font-bold bg-sd-primary border border-sd-primary-hover rounded-lg pointer-events-auto"
                   style={{
@@ -117,9 +160,7 @@ const ChildrenInformation: FunctionComponent<Props> = ({
                 <button
                   className="dark:hover:bg-accents-2 text-sm font-bold hover:bg-accents-3 rounded"
                   key={option.id}
-                  onClick={() => {
-                    updatePosition(index, option)
-                  }}
+                  onClick={(event) => updatePosition({ event, index, option })}
                 >
                   {option.value}
                 </button>
