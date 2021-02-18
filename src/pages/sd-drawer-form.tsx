@@ -116,4 +116,4 @@ export default function SdDrawerForm(): JSX.Element {
   )
 }
 
-ExampleTwo.Layout = Layout
+SdDrawerForm.Layout = Layout
