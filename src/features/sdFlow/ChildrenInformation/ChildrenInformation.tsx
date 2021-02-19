@@ -138,7 +138,7 @@ const ChildrenInformation: FunctionComponent<Props> = ({
             </p>
           </div>
 
-          <div className="relative flex h-14 bg-primary-2 rounded">
+          <div className="relative flex h-14 bg-primary-2 rounded-lg">
             <div className="absolute inset-x-0 flex h-full pointer-events-none">
               <motion.div className="flex items-center m-1 w-1/5">
                 <motion.button
